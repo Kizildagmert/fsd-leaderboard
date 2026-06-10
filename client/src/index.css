@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-dark: #050505;
+  --bg-black: #000000;
+  --bg-panel: #0a0a0a;
+  --bg-table-header: #121212;
+  --bg-table-row: #0a0a0a;
+  --bg-table-row-alt: #080808;
+  --bg-table-hover: #161a16;
+
+  --neon-green: #39ff14;
+  --neon-green-dim: rgba(57, 255, 20, 0.2);
+  --neon-green-glow: rgba(57, 255, 20, 0.5);
+
+  --text-main: #e0e0e0;
+  --text-muted: #6b6b6b;
+  --text-rank: var(--neon-green);
+  --text-coin: #4fc3f7;
+  --text-you: #ff9800;
+
+  --border-dim: #1a1a1a;
+  --border-green: var(--neon-green);
+
+  --font-mono: 'Space Mono', monospace;
+  --font-sans: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100vh;
+  background-color: var(--bg-black);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* APP LAYOUT */
+.app-wrapper {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+/* LEFT SIDEBAR (DEV MODE) */
+.left-panel {
+  width: 240px;
+  background: var(--bg-panel);
+  border-right: 1px solid var(--border-dim);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.left-panel__title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--neon-green);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.left-panel__btn {
+  background: transparent;
+  border: 1px solid var(--border-dim);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+  text-align: left;
+}
+
+.left-panel__btn:hover {
+  border-color: var(--neon-green);
+  color: var(--neon-green);
+  background: var(--neon-green-dim);
+  box-shadow: 0 0 8px var(--neon-green-glow);
+}
+
+.left-panel__btn--danger {
+  border-color: #f44336;
+  color: #f44336;
+}
+
+.left-panel__btn--danger:hover {
+  border-color: #f44336;
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  box-shadow: 0 0 8px rgba(244, 67, 54, 0.4);
+}
+
+/* MAIN CONTENT */
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: transparent;
+  position: relative;
+}
+
+/* LIST CONTAINER */
+.list-container {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-top: 1px solid var(--border-dim);
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.list-header {
+  display: grid;
+  grid-template-columns: 100px 2fr 1fr 1fr;
+  align-items: center;
+  height: 40px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border-dim);
+  background: var(--bg-table-header);
+
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.list-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.list-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list-content::-webkit-scrollbar-track {
+  background: var(--bg-black);
+}
+
+.list-content::-webkit-scrollbar-thumb {
+  background: var(--border-dim);
+}
+
+.list-row,
+.current-user-card {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  /* Sharp grid lines */
+  transition: background 0.2s;
+  align-items: center;
+}
+
+.list-header div,
+.list-row div,
+.current-user-card div {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  /* Sharp grid lines */
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-header div:last-child,
+.list-row div:last-child,
+.current-user-card div:last-child {
+  border-right: none;
+}
+
+.current-user-card {
+  background: rgba(79, 142, 247, 0.05);
+  /* Slight blue tint */
+  border-bottom: 1px solid rgba(79, 142, 247, 0.2);
+}
+
+.current-user-card:hover {
+  background: rgba(79, 142, 247, 0.1);
+}
+
+.list-row:hover {
+  background: var(--bg-row-hover);
+}
+
+.list-row--me-highlight {
+  background: rgba(79, 142, 247, 0.05);
+}
+
+.row-col-rank {
+  color: var(--text-muted);
+  font-family: 'Space Mono', monospace;
+}
+
+.row-col-rank--green {
+  color: var(--neon-green);
+  text-shadow: 0 0 5px rgba(57, 255, 20, 0.5);
+}
+
+.row-col-player {
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.you-badge {
+  background: rgba(79, 142, 247, 0.15);
+  color: var(--accent-blue);
+  border: 1px solid var(--accent-blue);
+  padding: 2px 6px;
+  font-size: 0.7rem;
+  border-radius: 4px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.row-col-player--you {
+  color: var(--text-you);
+}
+
+.row-col-score {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+}
+
+.row-col-reward {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-main);
+}
+
+/* TAILWIND HANDLES MOBILE RESPONSIVENESS */
