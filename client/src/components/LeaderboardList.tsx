@@ -123,6 +123,7 @@ export function LeaderboardList({ entries, neighbors, currentUser, prizePool, cu
             style={{ height: '100%' }}
             data={pairedEntries}
             rangeChanged={handleRangeChanged}
+            computeItemKey={(index, pair) => pair[0]?.userId ? `${pair[0].userId}-${pair[1]?.userId || 'none'}` : `divider-${index}`}
             itemContent={(index: number, pair: (LeaderboardEntry | undefined)[]) => {
               if (pair[0]?.rank === -1) {
                 const X = currentUser ? Math.max(0, currentUser.rank - entries.length) : 0;
