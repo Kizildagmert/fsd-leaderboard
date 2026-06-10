@@ -2,14 +2,14 @@
 
 Panteon Games Full Stack Developer Case — Haftalık liderlik tablosu sistemi.
 
-10 milyon kayıtlı, 2 milyon günlük aktif oyuncuya ölçeklenebilir şekilde tasarlandı.
+2 milyon günlük aktif oyuncuya ölçeklenebilir şekilde tasarlandı.
 
 ---
 
 ## 🚀 Live Demo
 
-> **Frontend:** `[DEPLOY SONRASI EKLENECEK]`
-> **Backend API:** `[DEPLOY SONRASI EKLENECEK]`
+> **Frontend:** https://fsd-leaderboard-9haotmwn6-merts-projects-21f3aa72.vercel.app/
+> **Backend API:** https://fsd-leaderboard.onrender.com/api/admin/metrics
 
 ---
 
