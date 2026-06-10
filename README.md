@@ -8,8 +8,8 @@ Panteon Games Full Stack Developer Case — Haftalık liderlik tablosu sistemi.
 
 ## 🚀 Live Demo
 
-> **Frontend:** https://fsd-leaderboard-9haotmwn6-merts-projects-21f3aa72.vercel.app/
-> **Backend API:** https://fsd-leaderboard.onrender.com/api/admin/metrics
+- **Frontend:** https://fsd-leaderboard-9haotmwn6-merts-projects-21f3aa72.vercel.app/
+- **Backend API:** https://fsd-leaderboard.onrender.com/api/admin/metrics
 
 ---
 
