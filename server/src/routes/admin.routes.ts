@@ -37,10 +37,6 @@ router.get('/metrics', async (_req: Request, res: Response): Promise<void> => {
  * Only available in development. Manually triggers the weekly reset.
  */
 router.post('/trigger-cron', async (_req: Request, res: Response): Promise<void> => {
-  if (process.env.NODE_ENV !== 'development') {
-    res.status(403).json({ error: 'Only available in development.', code: 'FORBIDDEN_IN_PRODUCTION' });
-    return;
-  }
   try {
     // Flush any pending simulation scores to ensure they are captured in the reset
     await flushBuffer();
@@ -57,10 +53,6 @@ router.post('/trigger-cron', async (_req: Request, res: Response): Promise<void>
  * Flushes the score buffer to Redis synchronously.
  */
 router.post('/flush', async (_req: Request, res: Response): Promise<void> => {
-  if (process.env.NODE_ENV !== 'development') {
-    res.status(403).json({ error: 'Only available in development.', code: 'FORBIDDEN_IN_PRODUCTION' });
-    return;
-  }
   try {
     await flushBuffer();
     res.status(200).json({ flushed: true });
@@ -81,10 +73,6 @@ router.post('/flush', async (_req: Request, res: Response): Promise<void> => {
  * 500: unexpected error
  */
 router.post('/simulate', async (_req: Request, res: Response): Promise<void> => {
-  if (process.env.NODE_ENV !== 'development') {
-    res.status(403).json({ error: 'Only available in development.', code: 'FORBIDDEN_IN_PRODUCTION' });
-    return;
-  }
   try {
     const pool = getPgPool();
 
@@ -154,11 +142,6 @@ router.post('/simulate', async (_req: Request, res: Response): Promise<void> => 
  * Flushes Redis, clears MongoDB history, backfills Week 1, and restarts the server by modifying .env
  */
 router.post('/hard-reset', async (_req: Request, res: Response): Promise<void> => {
-  if (process.env.NODE_ENV !== 'development') {
-    res.status(403).json({ error: 'Only available in development.', code: 'FORBIDDEN_IN_PRODUCTION' });
-    return;
-  }
-
   try {
     console.log('[AdminRoute] ⚠️ HARD RESET INITIATED...');
 
